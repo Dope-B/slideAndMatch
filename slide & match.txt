@@ -154,11 +154,6 @@ void loop()
 			if (is_touched && !touch_check_1) {
 				point_x = map(p.x, 150, 900, tft.width(), 0);
 				point_y = map(p.y, 130, 900, 0, tft.height());
-				Serial.print("L_x:  ");
-				Serial.print(point_x);
-				Serial.print("\t");
-				Serial.print("L_y:  ");
-				Serial.println(point_y);
 			}
 			slide_check();
 			current_color_change();
@@ -209,99 +204,6 @@ void slide_check() {
 			else if (gap_y > 15 && ((gap_x < gap_y*2.5))) { is_slide = 4; }
 			else if (gap_y < -15 && ((gap_x > gap_y*2.5))) { is_slide = 3; }
 			else { is_slide = 5; }
-			/*switch (is_slide)
-			{
-			case 1:
-				Serial.print("p1_x:  ");
-				Serial.print(touched_x);
-				Serial.print("\t");
-				Serial.print("p1_y:  ");
-				Serial.println(touched_y);
-				Serial.print("p2_x:  ");
-				Serial.print(ex_touched_x);
-				Serial.print("\t");
-				Serial.print("p2_y:  ");
-				Serial.println(ex_touched_y);
-				Serial.print("x:  ");
-				Serial.print(gap_x);
-				Serial.print("\t");
-				Serial.print("y:  ");
-				Serial.print(gap_y);
-				Serial.println("\t  left");
-				break;
-			case 2:
-				Serial.print("p1_x:  ");
-				Serial.print(touched_x);
-				Serial.print("\t");
-				Serial.print("p1_y:  ");
-				Serial.println(touched_y);
-				Serial.print("p2_x:  ");
-				Serial.print(ex_touched_x);
-				Serial.print("\t");
-				Serial.print("p2_y:  ");
-				Serial.println(ex_touched_y);
-				Serial.print("x:  ");
-				Serial.print(gap_x);
-				Serial.print("\t");
-				Serial.print("y:  ");
-				Serial.print(gap_y);
-				Serial.println("\t  right");
-				break;
-			case 3:
-				Serial.print("p1_x:  ");
-				Serial.print(touched_x);
-				Serial.print("\t");
-				Serial.print("p1_y:  ");
-				Serial.println(touched_y);
-				Serial.print("p2_x:  ");
-				Serial.print(ex_touched_x);
-				Serial.print("\t");
-				Serial.print("p2_y:  ");
-				Serial.println(ex_touched_y);
-				Serial.print("x:  ");
-				Serial.print(gap_x);
-				Serial.print("\t");
-				Serial.print("y:  ");
-				Serial.print(gap_y);
-				Serial.println("\t  up");
-				break;
-			case 4:
-				Serial.print("p1_x:  ");
-				Serial.print(touched_x);
-				Serial.print("\t");
-				Serial.print("p1_y:  ");
-				Serial.println(touched_y);
-				Serial.print("p2_x:  ");
-				Serial.print(ex_touched_x);
-				Serial.print("\t");
-				Serial.print("p2_y:  ");
-				Serial.println(ex_touched_y);
-				Serial.print("x:  ");
-				Serial.print(gap_x);
-				Serial.print("\t");
-				Serial.print("y:  ");
-				Serial.print(gap_y);
-				Serial.println("\t  down");
-				break;
-			default:
-				Serial.print("p1_x:  ");
-				Serial.print(touched_x);
-				Serial.print("\t");
-				Serial.print("p1_y:  ");
-				Serial.println(touched_y);
-				Serial.print("p2_x:  ");
-				Serial.print(ex_touched_x);
-				Serial.print("\t");
-				Serial.print("p2_y:  ");
-				Serial.println(ex_touched_y);
-				Serial.print("x:  ");
-				Serial.print(gap_x);
-				Serial.print("\t");
-				Serial.print("y:  ");
-				Serial.print(gap_y);
-				Serial.println("\t  none");
-				break;
-			}*/
 			touched_x = NULL;
 			touched_y = NULL;
 			ex_touched_x = NULL;
@@ -387,7 +289,7 @@ void current_color_change() {
 					color_change = false;
 					tft.fillRect(1, (tft.height() / 2) + 1, tft.width() - 2, num, current_color);
 				}
-				else { num += 5; min(num, (tft.height()) - 1); }
+				else { num += 5; num = min(num, (tft.height()) - 1); }
 				break;
 			case 4:
 				tft.fillRect(1, max(num, (tft.height() / 2) + 1), tft.width() - 2, 5, current_color);
@@ -396,7 +298,7 @@ void current_color_change() {
 					color_change = false;
 					tft.fillRect(1, num, tft.width() - 2, tft.height() - 1, current_color);
 				}
-				else { num -= 5; max(num, (tft.height() / 2) + 1); }
+				else { num -= 5; num = max(num, (tft.height() / 2) + 1); }
 				break;
 			default:break;
 			}
