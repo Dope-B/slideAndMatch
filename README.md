@@ -4,6 +4,8 @@
 #### 시용 부품
 - 1.8인치 터치패드
 
+<img width="30%" src="https://user-images.githubusercontent.com/33209821/230915236-3d256ada-d54d-4fba-be9d-bd9773d57eef.jpg"/>
+
 #### 설명
 - 터치패드는 상단, 하단으로 나뉜다.
   - 상단에는 주기적으로 상하좌우로 랜덤 색깔의 오브젝트들이 생성된고 가운데 고정 오브젝트가 있다.
